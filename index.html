@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PhysicsVerse — An interactive AI-powered physics learning platform with 3D solar system, electromagnetism simulator, and Newton's Laws visualizer." />
+  <title>PhysicsVerse — Interactive AI Physics Learning</title>
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Sans:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+  <!-- ========================================= -->
+  <!-- HERO LANDING PAGE                          -->
+  <!-- ========================================= -->
+  <div id="hero-page" class="hero-wrapper">
+    <!-- Background Video -->
+    <video
+      id="hero-video"
+      class="hero-video"
+      muted
+      playsinline
+      preload="auto"
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4"
+    ></video>
+
+    <!-- Content Wrapper (above video) -->
+    <div class="hero-content-wrapper">
+      <!-- Navbar -->
+      <nav class="navbar" id="main-navbar">
+        <div class="navbar-left">
+          <img src="assets/logo.png" alt="PhysicsVerse Logo" class="navbar-logo" />
+        </div>
+        <div class="nav-items">
+          <button class="nav-item" onclick="enterApp(); showScreen('home')">Simulations</button>
+          <button class="nav-item" onclick="enterApp(); showScreen('leaderboard')">Leaderboard</button>
+          <button class="nav-item" onclick="enterApp(); showScreen('home')">AI Physics Guide</button>
+        </div>
+        <div class="navbar-right">
+          <button class="btn-hero-secondary btn-signup" onclick="enterApp()">Get Started</button>
+        </div>
+      </nav>
+      <!-- Navbar Divider -->
+      <div class="nav-divider"></div>
+
+      <!-- Hero Section -->
+      <section class="hero-section" id="hero-main">
+        <!-- Blurred overlay shape -->
+        <div class="hero-blur-shape"></div>
+
+        <!-- Hero Content -->
+        <div class="hero-inner" style="position: relative; z-index: 2; text-align: center;">
+          <h1 class="hero-headline">
+            Physics<span class="gradient-text">Verse</span>
+          </h1>
+          <p class="hero-subtitle">
+            Interact with 3D simulations, canvas-based labs,<br />and AI tutors to master the universe of physics.
+          </p>
+          <button class="btn-hero-secondary btn-cta" onclick="enterApp()">
+            Enter the Universe
+          </button>
+        </div>
+      </section>
+
+      <!-- Logo Marquee -->
+      <div class="marquee-container">
+        <div class="marquee-text">
+          Explore our works<br />& project features
+        </div>
+        <div class="marquee-wrapper">
+          <div class="marquee-track" id="marquee-track">
+            <!-- First set -->
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">🌌</div>
+              <span class="marquee-name">3D Solar System</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">⚡</div>
+              <span class="marquee-name">Circuits Lab</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">🏎️</div>
+              <span class="marquee-name">Newton's Forces</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">🤖</div>
+              <span class="marquee-name">AI Explainer</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">🔊</div>
+              <span class="marquee-name">Read Aloud</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">📝</div>
+              <span class="marquee-name">Interactive Quizzes</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">🏆</div>
+              <span class="marquee-name">Leaderboards</span>
+            </div>
+            <!-- Duplicate set for seamless loop -->
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">🌌</div>
+              <span class="marquee-name">3D Solar System</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">⚡</div>
+              <span class="marquee-name">Circuits Lab</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">🏎️</div>
+              <span class="marquee-name">Newton's Forces</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">🤖</div>
+              <span class="marquee-name">AI Explainer</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">🔊</div>
+              <span class="marquee-name">Read Aloud</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">📝</div>
+              <span class="marquee-name">Interactive Quizzes</span>
+            </div>
+            <div class="marquee-item">
+              <div class="marquee-icon liquid-glass">🏆</div>
+              <span class="marquee-name">Leaderboards</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================= -->
+  <!-- MAIN APP (hidden until user enters)        -->
+  <!-- ========================================= -->
+  <div id="app-container" class="app-container">
+    <!-- Starfield Background -->
+    <div class="starfield" id="starfield"></div>
+
+    <!-- XP Bar -->
+    <div class="xp-bar-container" id="xp-bar">
+      <span class="xp-label">XP</span>
+      <div class="xp-bar">
+        <div class="xp-fill" id="xp-fill" style="width: 0%"></div>
+      </div>
+      <span class="xp-text" id="xp-text">0 / 500 XP</span>
+      <button class="leaderboard-btn" onclick="showScreen('leaderboard')">🏆 Leaderboard</button>
+    </div>
+
+    <!-- ====== HOME SCREEN ====== -->
+    <div id="screen-home" class="screen home-screen active">
+      <h1 class="app-title text-glow">PhysicsVerse</h1>
+      <p class="app-subtitle-text">Explore the universe of physics through interactive simulations & AI</p>
+
+      <div class="mode-cards">
+        <!-- Solar System Card -->
+        <div class="glass-card" onclick="showScreen('solar')" id="card-solar">
+          <span class="mode-card-emoji">🌌</span>
+          <h3 class="mode-card-title">Solar System</h3>
+          <p class="mode-card-desc">Explore planets, orbits, and gravity in an interactive 3D solar system.</p>
+        </div>
+        <!-- Electromagnetism Card -->
+        <div class="glass-card" onclick="showScreen('em')" id="card-em">
+          <span class="mode-card-emoji">⚡</span>
+          <h3 class="mode-card-title">Electromagnetism</h3>
+          <p class="mode-card-desc">Build circuits, visualize magnetic fields, and understand electric current.</p>
+        </div>
+        <!-- Newton's Laws Card -->
+        <div class="glass-card" onclick="showScreen('newton')" id="card-newton">
+          <span class="mode-card-emoji">🏎️</span>
+          <h3 class="mode-card-title">Newton's Laws</h3>
+          <p class="mode-card-desc">Simulate motion, collisions, and forces with real-time physics.</p>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="badges-container" id="badges-container">
+        <div class="badge" id="badge-solar" data-badge="solar">⭐ Star Gazer</div>
+        <div class="badge" id="badge-em" data-badge="em">⚡ Circuit Master</div>
+        <div class="badge" id="badge-newton" data-badge="newton">💪 Force Field</div>
+        <div class="badge" id="badge-master" data-badge="master">🌌 PhysicsVerse Master</div>
+      </div>
+    </div>
+
+    <!-- ====== SOLAR SYSTEM SCREEN ====== -->
+    <div id="screen-solar" class="screen">
+      <div class="mode-header">
+        <button class="back-btn" onclick="showScreen('home')">←</button>
+        <h2 class="mode-title" style="color: var(--accent);">🌌 Solar System</h2>
+      </div>
+      <div class="mode-content">
+        <div id="three-container">
+          <!-- Floating HUD Controls -->
+          <div class="solar-hud">
+            <button class="hud-btn" id="btn-solar-play" onclick="if(window.SolarSystem) window.SolarSystem.togglePlay()">⏸️ Pause</button>
+            <div class="hud-divider"></div>
+            <button class="hud-btn" id="btn-solar-orbits" onclick="if(window.SolarSystem) window.SolarSystem.toggleOrbits()">🌐 Orbits: ON</button>
+            <button class="hud-btn" id="btn-solar-labels" onclick="if(window.SolarSystem) window.SolarSystem.toggleLabels()">🏷️ Labels: ON</button>
+            <button class="hud-btn" id="btn-solar-scale" onclick="if(window.SolarSystem) window.SolarSystem.toggleScaleMode()">📏 Scale: Schematic</button>
+            <button class="hud-btn" id="btn-solar-cam-mode" onclick="if(window.SolarSystem) window.SolarSystem.toggleCameraMode()">🎥 Cam: Free</button>
+            <div class="hud-divider"></div>
+            <div class="hud-slider-group">
+              <span class="hud-slider-label">Speed</span>
+              <input type="range" id="solar-speed-slider" min="0" max="500" value="100" class="hud-slider" oninput="if(window.SolarSystem) window.SolarSystem.setSpeedMultiplier(this.value / 100)">
+              <span class="hud-slider-val" id="solar-speed-val">1.0x</span>
+            </div>
+          </div>
+          <!-- HTML labels for planets -->
+          <div id="solar-labels-container" class="solar-labels-overlay"></div>
+        </div>
+        <div class="side-panel hidden" id="solar-panel">
+          <h3 class="panel-title" id="planet-name">Select a Planet</h3>
+          <p class="panel-facts" id="planet-facts">Click on any planet in the 3D scene to learn about it.</p>
+          <div id="solar-ai-container"></div>
+          <button class="panel-btn primary" id="btn-solar-explain" onclick="handleAIExplain('solar')">
+            🤖 Ask AI to Explain
+          </button>
+          <button class="panel-btn" id="btn-solar-voice" onclick="handleVoiceRead('solar')" style="display:none;">
+            🔊 Read Aloud
+          </button>
+          <button class="panel-btn" id="btn-solar-quiz" onclick="handleQuiz('solar')">
+            📝 Test Yourself
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== ELECTROMAGNETISM SCREEN ====== -->
+    <div id="screen-em" class="screen">
+      <div class="mode-header">
+        <button class="back-btn" onclick="showScreen('home')">←</button>
+        <h2 class="mode-title" style="color: var(--purple);">⚡ Electromagnetism</h2>
+      </div>
+      <div class="mode-content">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+          <div class="em-controls" id="em-controls">
+            <!-- Component buttons injected by em.js -->
+          </div>
+          <div class="canvas-container" style="flex: 1;">
+            <canvas id="em-canvas"></canvas>
+          </div>
+        </div>
+        <div class="side-panel" id="em-panel">
+          <h3 class="panel-title">Electromagnetism Lab</h3>
+          <p class="panel-facts" id="em-status">Select a component and click on the grid to place it. Build a circuit!</p>
+          <div id="em-ai-container"></div>
+          <button class="panel-btn primary" id="btn-em-explain" onclick="handleAIExplain('em')">
+            🤖 Explain This
+          </button>
+          <button class="panel-btn" id="btn-em-voice" onclick="handleVoiceRead('em')" style="display:none;">
+            🔊 Read Aloud
+          </button>
+          <button class="panel-btn" onclick="handleQuiz('em')">
+            📝 Test Yourself
+          </button>
+          <button class="panel-btn" onclick="resetEM()" style="border-color: rgba(239,68,68,0.3); color: #ef4444;">
+            🗑️ Reset Circuit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== NEWTON'S LAWS SCREEN ====== -->
+    <div id="screen-newton" class="screen">
+      <div class="mode-header">
+        <button class="back-btn" onclick="showScreen('home')">←</button>
+        <h2 class="mode-title" style="color: var(--primary);">🏎️ Newton's Laws</h2>
+      </div>
+      <div class="mode-content">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+          <div class="canvas-container" style="flex: 1;">
+            <canvas id="newton-canvas"></canvas>
+          </div>
+        </div>
+        <div class="side-panel" id="newton-panel">
+          <h3 class="panel-title">🏎️ Newton's Lab</h3>
+          <div class="slider-group">
+            <div class="slider-row">
+              <label>⚖️ Mass</label>
+              <input type="range" id="slider-mass" min="1" max="20" value="5" oninput="updateSliderDisplay()">
+              <span class="value" id="val-mass">5</span>
+            </div>
+            <div class="slider-row">
+              <label>🎯 Force</label>
+              <input type="range" id="slider-force" min="1" max="100" value="30" oninput="updateSliderDisplay()">
+              <span class="value" id="val-force">30</span>
+            </div>
+            <div class="slider-row">
+              <label>🛑 Friction</label>
+              <input type="range" id="slider-friction" min="0" max="100" value="20" oninput="updateSliderDisplay()">
+              <span class="value" id="val-friction">0.2</span>
+            </div>
+            <div class="slider-row">
+              <label>🌍 Gravity</label>
+              <button class="panel-btn" id="btn-gravity" onclick="toggleGravity()" style="padding: 6px 16px; flex: 1;">OFF</button>
+            </div>
+          </div>
+          <!-- Add Object Controls -->
+          <div class="slider-group" style="border-top: 1px solid var(--glass-border); padding-top: 12px; margin-top: 4px;">
+            <label style="font-size: 12px; font-family: 'Orbitron', sans-serif; color: var(--primary); font-weight: 600;">➕ Add Physics Bodies</label>
+            <div style="display: flex; gap: 8px;">
+              <button class="panel-btn" onclick="addNewNewtonObject('ball')" style="flex: 1; padding: 8px 10px; font-size: 12px;">🔵 Add Ball</button>
+              <button class="panel-btn" onclick="addNewNewtonObject('block')" style="flex: 1; padding: 8px 10px; font-size: 12px;">🟩 Add Block</button>
+            </div>
+          </div>
+          <button class="panel-btn primary" onclick="launchNewton()" style="margin-top: 8px;">
+            🚀 Launch Simulation
+          </button>
+          <button class="panel-btn" onclick="resetNewton()">
+            🔄 Reset
+          </button>
+          <div id="newton-ai-container"></div>
+          <button class="panel-btn primary" onclick="handleAIExplain('newton')">
+            🤖 Explain This
+          </button>
+          <button class="panel-btn" id="btn-newton-voice" onclick="handleVoiceRead('newton')" style="display:none;">
+            🔊 Read Aloud
+          </button>
+          <button class="panel-btn" onclick="handleQuiz('newton')">
+            📝 Test Yourself
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== LEADERBOARD SCREEN ====== -->
+    <div id="screen-leaderboard" class="screen leaderboard-screen">
+      <div class="mode-header" style="justify-content: center;">
+        <button class="back-btn" onclick="showScreen('home')">←</button>
+        <h2 class="mode-title" style="color: var(--accent);">🏆 Leaderboard</h2>
+      </div>
+      <h1 class="leaderboard-title">Top Physicists</h1>
+      <div class="leaderboard-list" id="leaderboard-list">
+        <!-- Populated by JS -->
+      </div>
+      <div class="badges-container" style="margin-top: 32px;">
+        <h3 style="width: 100%; text-align: center; font-family: 'Orbitron', sans-serif; font-size: 16px; color: var(--primary); margin-bottom: 8px;">Your Badges</h3>
+        <div class="badge" id="lb-badge-solar" data-badge="solar">⭐ Star Gazer</div>
+        <div class="badge" id="lb-badge-em" data-badge="em">⚡ Circuit Master</div>
+        <div class="badge" id="lb-badge-newton" data-badge="newton">💪 Force Field</div>
+        <div class="badge" id="lb-badge-master" data-badge="master">🌌 PhysicsVerse Master</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== QUIZ OVERLAY ====== -->
+  <div class="quiz-overlay" id="quiz-overlay">
+    <div class="quiz-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h3 style="font-family: 'Orbitron', sans-serif; color: var(--primary); font-size: 18px;">
+          <span id="quiz-mode-label">Quiz</span> — Question <span id="quiz-num">1</span>/5
+        </h3>
+        <button class="panel-btn" onclick="closeQuiz()" style="width: auto; padding: 6px 14px; font-size: 12px;">✕ Close</button>
+      </div>
+      <p class="quiz-question" id="quiz-question"></p>
+      <div id="quiz-options"></div>
+      <div id="quiz-feedback" style="margin-top: 16px; font-size: 14px; min-height: 24px;"></div>
+      <button class="panel-btn primary" id="quiz-next-btn" onclick="nextQuizQuestion()" style="margin-top: 16px; display: none;">
+        Next Question →
+      </button>
+      <div id="quiz-result" style="display: none; text-align: center; margin-top: 20px;">
+        <p style="font-family: 'Orbitron', sans-serif; font-size: 24px; color: var(--accent);" id="quiz-score-text"></p>
+        <p style="margin-top: 8px; color: hsl(var(--foreground) / 0.7);" id="quiz-xp-earned"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== RANK-UP OVERLAY ====== -->
+  <div class="rank-up-overlay" id="rank-up-overlay">
+    <div class="rank-up-content">
+      <span class="emoji" id="rank-up-emoji">🏆</span>
+      <p class="message" id="rank-up-message">Rank Up!</p>
+    </div>
+  </div>
+
+  <!-- ====== NOTIFICATION TOAST ====== -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Scripts -->
+  <script src="ai/claude.js"></script>
+  <script src="modes/solar.js"></script>
+  <script src="modes/em.js"></script>
+  <script src="modes/newton.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
